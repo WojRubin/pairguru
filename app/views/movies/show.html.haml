@@ -1,5 +1,16 @@
-%h1= @movie.title
+%h1= movie.title
 .jumbotron
-  = @movie.description
-- if user_signed_in?
-  %p= link_to 'Email me details about this movie', send_info_movie_path(@movie), class: 'btn btn-sm btn-default'
+  .movie-poster
+    %img.img-rounded{ src: movie.cover, width: "auto", height: "400" }
+  %p= movie.description
+  = movie.rating
+  = movie.plot
+  = movie.send_details_link
+  %h3 Comments
+  #comments
+    - comments.each do |comment|
+      =render partial: 'comment', locals: { comment: comment }
+  - if user_signed_in?
+    #comment-form
+      =render partial: 'comments/form', locals: { movie: movie }, review: Comment.new(movie_id: movie.id)
+        

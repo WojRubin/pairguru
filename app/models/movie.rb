@@ -13,5 +13,13 @@
 #
 
 class Movie < ApplicationRecord
-  belongs_to :genre
+  belongs_to :genre, counter_cache: true
+  has_many :comments, dependent: :destroy
+  accepts_nested_attributes_for :comments
+
+
+  def comments_for_this_user user
+		comments = self.comments.where(user: user).first
+	end
+
 end

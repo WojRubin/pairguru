@@ -1,0 +1,2 @@
+$("#comment_<%= @comment.id %>").remove();
+$("#comment-form").empty().append("<%= escape_javascript render(:partial => 'comments/form', :locals => { :movie => @comment.movie }) %>");

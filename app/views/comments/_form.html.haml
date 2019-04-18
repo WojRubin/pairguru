@@ -1,0 +1,11 @@
+-@movie = local_assigns[:movie ]
+
+- if movie.comments_for_this_user(current_user).present?
+  You can't add more comments for this movie. Do you want remove one?
+  =link_to 'Remove comment', comment_path(movie.comments_for_this_user(current_user)),method: :delete, data: { confirm: 'Are you sure?' }, remote: true
+-else
+  .comment_form
+    = form_for [@movie, Comment.new], remote: true do |f|
+      = f.text_area :body, class: "col-12 form-control", placeholder: "Write comment...", rows: 4
+      = f.hidden_field :movie_id, :value => @movie.id
+      = f.submit 'Add comments', :class=> 'btn btn-primary'

@@ -1,0 +1,9 @@
+- comment = local_assigns[:comment]
+.comment-wrapper{:id => "comment_#{comment.id}"}
+  .comment-header
+    %strong= comment.user.name
+    = comment.created_at.strftime("%B %d, %Y")
+    .comment-content
+      = comment.body
+
+

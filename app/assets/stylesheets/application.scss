@@ -1,2 +1,18 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+.comment-wrapper{
+	border-top: 1px dotted #DFDFDF;
+	margin-bottom: 10px;
+	padding-top: 5px;
+	width: 50%;
+}
+.comment-header{
+  color: #979797;
+  font-size: 12px;
+}
+.comment-content{
+  color: #3F3F41;
+  font-size: 14px;
+  padding: 10px 0px;
+}
